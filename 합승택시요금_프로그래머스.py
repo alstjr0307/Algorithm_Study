@@ -9,15 +9,15 @@ def solution(n, s, a, b, fares):
     print(graph)
     answer = inf
 
-    def dijkstra(start):
+    def dijkstra(start): 
 
         heap = []
-        dist = [inf] *(n+1)
-        heapq.heappush(heap,(0,start))
+        dist = [inf] *(n+1) #출발지점으로부터의 거리 리스트
+        heapq.heappush(heap,(0,start)) #힙에 출발지점 삽입
         dist[start]=0
         while heap:
             value, destination= heapq.heappop(heap)
-            if dist[destination] < value:
+            if dist[destination] < value: #destination까지의 거리가 최소가 아닐 시에만 실행
                 continue
             for v, d in graph[destination]:
                 next_value = value + v
