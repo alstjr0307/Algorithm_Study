@@ -2,22 +2,23 @@ n = int(input())
 data=[]
 for i in range(n):
     data.append(int(input()))
-where=data.index(n)
-key=0
+key=1
+value=1
 answer=[]
-for i in range(n):
-    while True:
-        key+=1
+imsi=[]
+for i in data:
+    while key<=i:
+        imsi.append(key)
         answer.append('+')
-        if key==data[n]:
-            answer.append('-')
-            break
-    
-for i in range(0, where-1):
-    if data[i]
-for i in range(where,n-1):
-    if data[i]<data[i+1]:
+        key+=1
+    if imsi[-1] == i:
+        answer.append('-')
+        imsi.pop()
+    else:
         print('NO')
         exit()
+for i in answer:
+    print(i)
 
-for i in range(n):
+
+    
