@@ -3,16 +3,14 @@ visited=[]
 need_visit=[i for i in range(1,n+1)]
 answer=[]
 imsi=[]
-def dfs(start,visited,len):
+def dfs(start):
     global answer
-    visited.append(start)
-    imsi.append(start)
-    if len(imsi)==m:
-        answer.append(imsi)
-        imsi.pop()
-    else:
-        for i in range(start+1, n+1):
-            if i not in visited:
-                dfs(i,visited,len)
-    
-dfs(1,visited,m)
+    if len(visited)==m:
+        print(' '.join(map(str,visited)))
+        return
+    for i in range(start, n+1):
+        if i not in visited:
+            visited.append(i)
+            dfs(i)
+            visited.pop()
+dfs(1)
