@@ -2,46 +2,15 @@ import sys
 
 n = int(input())
 data = list(map(int,sys.stdin.readline().split()))
-data.reverse()
-top = max(data)
-data2=[]
-for i in data:
-    data2.append(top-i)
-
-answer=[]
-flag=0
-
-start=data2[0]
-if n==1:
-    answer2=[0]
-
-else:
-        
-    while flag<=n-1:
-        
-        tmp=1
-        flag+=1
-        if flag<n:
-            while data2[flag] >=start :
-                tmp+=1
-                flag+=1
-                if flag >=n:
-                    break
-        
-            for i in range(tmp):
-                answer.append(flag)
-            if flag<n:
-                start = data2[flag]
-            else:
-                break
+stack = []
+answer= [0 for _ in range(n)]
+for i in range(n):
+    while stack:
+        if data[stack[-1][0]]<data[i]:
+            stack.pop()
         else:
-            answer.append(flag)
-            
-        
-    answer2=[]
-    answer.reverse()
-    for i in answer:
-        answer2.append(n-i)
-for i in range(n-1):
-    print(answer2[i], end=" ")
-print(answer2[-1])
+            answer[i] = stack[-1][0]+1
+            break
+    stack.append((i,data[i]))
+
+print(*answer)
